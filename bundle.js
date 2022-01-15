@@ -126,7 +126,17 @@ eval("\n\n/* istanbul ignore next  */\nfunction styleTagTransform(css, styleElem
   \**********************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./style.css */ \"./src/style.css\");\n\n\n\n\n//# sourceURL=webpack://weatherapp/./src/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./style.css */ \"./src/style.css\");\n/* harmony import */ var _weather_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./weather.js */ \"./src/weather.js\");\n\n\n\nconst cityname = \"Hampton\"; //Temporary whilst building API calls\nconst theURL = _weather_js__WEBPACK_IMPORTED_MODULE_1__.getRequestURL(\"Southampton\");\n\nasync function getWeatherData(theURL) {\n    const weatherData = await _weather_js__WEBPACK_IMPORTED_MODULE_1__.requestWeather(theURL);\n    console.log(weatherData);\n    console.log(`The weather in ${cityname} right now is ${weatherData.weather[0].main}`);\n}\n\ngetWeatherData(theURL);\n\n//# sourceURL=webpack://weatherapp/./src/index.js?");
+
+/***/ }),
+
+/***/ "./src/weather.js":
+/*!************************!*\
+  !*** ./src/weather.js ***!
+  \************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"getRequestURL\": () => (/* binding */ getRequestURL),\n/* harmony export */   \"requestWeather\": () => (/* binding */ requestWeather)\n/* harmony export */ });\n//Note: This publicly visible API key is specifically expected\n//See here for the explanation https://www.theodinproject.com/paths/full-stack-javascript/courses/javascript/lessons/weather-app#api-keys-secrets-and-security\nconst key = \"875f6ecb3e3a2b867951e413711e4de1\" //The openweather API key.\nconst cityname = \"Hampton\"; //Temporary whilst building API calls\n\nfunction getRequestURL(location) {\n    return `https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=${key}`\n}\n\nasync function requestWeather(url) {\n    const response = await fetch(url);\n    const weatherData = await response.json();\n    return weatherData;\n}\n\n\n\n//# sourceURL=webpack://weatherapp/./src/weather.js?");
 
 /***/ }),
 

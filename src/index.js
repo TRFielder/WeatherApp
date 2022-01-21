@@ -45,16 +45,20 @@ async function buildForecast(firstLoad = false) {
             theweather.daily[i].pop
         )
     }
-    console.log(fiveDayForecast);
     displayForecast(fiveDayForecast);
 }
 
 function displayForecast(weather) {
     
+
     //Loop through the forecast divs updating with weather
     for(let i = 0; i <= 4; i++) {
         
         const forecastDiv = document.getElementById(`forecast${i}`);
+        //Remove pre-existing child nodes
+        while(forecastDiv.firstChild) {
+            forecastDiv.removeChild(forecastDiv.firstChild);
+        }
 
         const main = document.createElement("div");
         main.textContent = weather[i].main;

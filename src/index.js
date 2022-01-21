@@ -1,11 +1,18 @@
 import * as weatherFunc from "./weather.js";
 import init from "./init.js";
 
-async function buildForecast() {
 
-    //Get the user selected location from the search box
-    const input = document.getElementById("searchbox")
-    const cityname = input.value;
+async function buildForecast(firstLoad = false) {
+
+    let cityname;
+    //Get the user selected location from the search box, unless this was the first load
+    const input = document.getElementById("searchbox");
+    if(firstLoad) {
+        cityname = "Hampton";
+    }
+    else {
+        cityname = input.value;
+    }
 
     //Build the URL to find the city's coordinates
     const coordURL = weatherFunc.getcurrentWeatherURL(cityname)
@@ -30,10 +37,11 @@ async function buildForecast() {
             theweather.daily[i].pop
         )
         console.log(`Forecast for day ${i}`)
-        console.log(fiveDayForecast[i])
+        console.log(fiveDayForecast[i].temp)
     }
 }
 
 init();
+buildForecast(true);
 
 export default buildForecast

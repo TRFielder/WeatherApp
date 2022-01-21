@@ -9,4 +9,17 @@ body {
 
 #banner {
     color: white;
+    border: 2px solid blue;
+}
+
+#forecastbox {
+    display: flex;
+    margin: auto;
+    width: 75%;
+    border: 2px solid white;
+    color: white;
+}
+
+.forecast-display {
+    border:2px solid red;
 }

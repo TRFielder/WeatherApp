@@ -23,6 +23,21 @@ function init() {
     searchBtn.addEventListener("click", function(){
         buildForecast();
     })
+    populateUI();
+}
+
+function populateUI() {
+    //This div will contain five more divs, which will show the forecast for each day
+    const forecast = document.createElement("div");
+    forecast.setAttribute("id", "forecastbox");
+
+    for(let i=0; i<=4; i++) {
+        let forecastDiv = document.createElement("div");
+        forecastDiv.className ="forecast-display";
+        forecastDiv.textContent = `This is forecast div #${i}`;
+        forecast.appendChild(forecastDiv);
+    }
+    document.body.appendChild(forecast);    
 }
 
 export default init

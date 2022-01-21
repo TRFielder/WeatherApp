@@ -3,17 +3,16 @@
 const key = "875f6ecb3e3a2b867951e413711e4de1" //The openweather API key.
 const units = "metric";
 
-const weatherObj = function(main, temp, feelslike, rainchance, wind) {
+const weatherObj = function(main, temp, feelslike, rainchance) {
     this.main = main;
     this.temp = temp;
     this.feelslike = feelslike;
     this.rainchance = rainchance;
-    this.wind = wind;
-    return{main, temp, feelslike, rainchance, wind};
+    return{main, temp, feelslike, rainchance};
 }
 
-function getcurrentWeatherURL(location) {
-    return `https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=${key}&units=${units}`
+function getcurrentWeatherURL(location, countrycode) {
+    return `https://api.openweathermap.org/data/2.5/weather?q=${location},${countrycode}&appid=${key}&units=${units}`
 }
 
 function getForecastURL(latitude, longitude) {

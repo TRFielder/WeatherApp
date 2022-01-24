@@ -7,7 +7,7 @@ async function buildForecast(firstLoad = false) {
     let cityname;
     let countrycode;
     //Get the user selected location from the search box, unless this was the first load
-    const input = document.getElementById("searchbox");
+    const input = document.getElementById("searchInput");
     if(firstLoad) {
         cityname = "Hampton";
         countrycode = "GB";

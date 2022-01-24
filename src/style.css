@@ -18,11 +18,13 @@ body {
     width: 75%;
     border: 2px solid white;
     color: white;
+    justify-content: space-around;
 }
 
 .forecast-display {
     display: flex;
     flex-direction: column;
     border:2px solid red;
+    align-items: center;
 }
 

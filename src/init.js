@@ -6,18 +6,23 @@ import buildForecast from "./index.js";
 function init() {
     //Put the search bar in the top
     const banner = document.createElement("div")
-    banner.textContent = "Location"
     banner.setAttribute("id","banner")
-    //The actual search box
+    //COntainer for search bar
+    const searchbox = document.createElement("div")
+    searchbox.setAttribute("id", "searchBox")
+
     const searchInput = document.createElement("input")
     searchInput.setAttribute("type","text")
-    searchInput.setAttribute("id", "searchbox")
-    banner.appendChild(searchInput)
+    searchInput.setAttribute("id", "searchInput")
+    searchbox.appendChild(searchInput)
+
     const searchBtn = document.createElement("button")
     searchBtn.setAttribute("id", "searchBtn")
     searchBtn.textContent = "Go";
-    banner.appendChild(searchBtn)
+    searchbox.appendChild(searchBtn)
+
     document.body.appendChild(banner)
+    banner.appendChild(searchbox)
 
     //Add event listener for clicking on the search button
     searchBtn.addEventListener("click", function(){

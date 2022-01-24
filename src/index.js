@@ -33,13 +33,17 @@ async function buildForecast(firstLoad = false) {
     //Now request the daily forecast from the One Call API using the obtained coordinates
     const forecastURL = weatherFunc.getForecastURL(latitude, longitude);    
     let theweather = await weatherFunc.requestWeather(forecastURL);
+    console.log(theweather);
 
     //Construct daily weather object array (main, temp, feelslike, rainchance, wind)
     let fiveDayForecast = [];
 
     for (let i = 0; i <= 4; i++) {
+        console.log(theweather.daily[i].weather[0].icon)
+        
         fiveDayForecast[i] = new weatherFunc.weatherObj(
             theweather.daily[i].weather[0].main,
+            weatherFunc.getIcon(weatherFunc.getIconURL(theweather.daily[i].weather[0].icon)),
             theweather.daily[i].temp.day,
             theweather.daily[i].feels_like.day,
             theweather.daily[i].pop
@@ -63,6 +67,10 @@ function displayForecast(weather) {
         const main = document.createElement("div");
         main.textContent = weather[i].main;
         forecastDiv.appendChild(main);
+
+        const img = document.createElement("img");
+        img.src = weather[i].icon;
+        forecastDiv.appendChild(img);
 
         const temp = document.createElement("div");
         temp.textContent = `${weather[i].temp} °C`;

@@ -9,7 +9,7 @@ const weatherObj = function(main, icon, temp, feelslike, rainchance) {
     this.temp = temp;
     this.feelslike = feelslike;
     this.rainchance = rainchance;
-    return{main, temp, feelslike, rainchance};
+    return{main, icon, temp, feelslike, rainchance};
 }
 
 function getcurrentWeatherURL(location, countrycode) {

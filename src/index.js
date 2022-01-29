@@ -1,5 +1,6 @@
 import * as weatherFunc from "./weather.js";
 import init from "./init.js";
+import {format, addDays} from 'date-fns';
 
 
 async function buildForecast(firstLoad = false) {
@@ -59,6 +60,9 @@ function displayForecast(weather) {
         while(forecastDiv.firstChild) {
             forecastDiv.removeChild(forecastDiv.firstChild);
         }
+        const date = document.createElement("div");
+        date.textContent = format(addDays(new Date(), i), "eeee")
+        forecastDiv.appendChild(date);
 
         const main = document.createElement("div");
         main.textContent = weather[i].main;

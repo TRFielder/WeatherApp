@@ -3,6 +3,7 @@ import "./style.css";
 import "./index.js"
 import buildForecast from "./index.js";
 
+
 function init() {
     //Put the search bar in the top
     const banner = document.createElement("div")
